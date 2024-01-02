@@ -1,0 +1,15 @@
+{
+  "labels": {
+  },
+  "validations": {
+  },
+  "messages": {
+  },
+  "exceptions": {
+    "userNotFuond": {
+      "code": "1",
+      "message": "کاربر مورد نظر یافت نشد....",
+      "httpStatus": "BAD_REQUEST"
+    }
+  }
+}

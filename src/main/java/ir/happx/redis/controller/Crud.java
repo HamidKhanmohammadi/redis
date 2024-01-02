@@ -16,7 +16,12 @@ public class Crud {
     }
 
     @PostMapping("add")
-    public void addUser(@RequestBody BUser BUser) {
-        userService.addUser(BUser);
+    public void addUser(@RequestBody BUser bUser) {
+        userService.addUser(bUser);
+    }
+
+    @PostMapping("edit")
+    public void editUser(@RequestBody BUser bUser){
+        userService.editUser(bUser);
     }
 }
