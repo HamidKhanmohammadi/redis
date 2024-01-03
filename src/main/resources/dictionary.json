@@ -4,6 +4,8 @@
   "validations": {
   },
   "messages": {
+    "userNotFuondMessage": "کاربر مورد نظر یافت نشد....",
+    "successMessage": "عملیات مورد نظر با موفقیت انجام شد"
   },
   "exceptions": {
     "userNotFuond": {

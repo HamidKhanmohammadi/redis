@@ -2,6 +2,8 @@ package ir.happx.redis.service;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import ir.happx.redis.domain.BUser;
 import ir.happx.redis.repository.UserRepository;
 import ir.happx.redis.util.Dictionary;
@@ -15,15 +17,23 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public BUser addUser(BUser BUser) {
-        return userRepository.save(BUser);
+    public List<BUser> getUsers(){
+        return userRepository.findAll();
+    }
+    public BUser addUser(BUser user) {
+        return userRepository.save(user);
     }
 
-    public String editUser(BUser bUser) {
-        userRepository.findBUserById(bUser.getId());
-        if (bUser == null) {
-            userRepository.save(bUser);
+    public String editUser(BUser user) {
+        userRepository.findBUserById(user.getId());
+        if (user == null) {
+            return Dictionary.message("userNotFuondMessage");
         }
-        throw Dictionary.exception("userNotFuond");
+        userRepository.save(user);
+        return Dictionary.message("successMessage");
+    }
+
+    public void deleteUser(String userId){
+        userRepository.deleteById(userId);
     }
 }

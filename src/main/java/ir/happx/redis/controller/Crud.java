@@ -1,6 +1,9 @@
 package ir.happx.redis.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 import ir.happx.redis.domain.BUser;
 import ir.happx.redis.service.UserService;
@@ -15,13 +18,23 @@ public class Crud {
         this.userService = userService;
     }
 
+    @PostMapping("get")
+    public ResponseEntity<List<BUser>> getUsers() {
+        return ResponseEntity.ok(userService.getUsers());
+    }
+
     @PostMapping("add")
-    public void addUser(@RequestBody BUser bUser) {
-        userService.addUser(bUser);
+    public void addUser(@RequestBody BUser user) {
+        userService.addUser(user);
     }
 
     @PostMapping("edit")
-    public void editUser(@RequestBody BUser bUser){
-        userService.editUser(bUser);
+    public ResponseEntity<String> editUser(@RequestBody BUser user) {
+        return ResponseEntity.ok(userService.editUser(user));
+    }
+
+    @PostMapping("delete")
+    public void deleteUser(String userId){
+        userService.deleteUser(userId);
     }
 }
